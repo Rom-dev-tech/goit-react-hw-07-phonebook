@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaUser, FaPhone } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { contactsActions, contactsSelectors } from 'redux/phonebook';
+import { contactsOparations, contactsSelectors } from 'redux/phonebook';
 import Title from 'components/Title';
 import Filter from 'components/Filter';
 import NotificatiomMessage from 'components/NotificatiomMessage';
@@ -15,7 +15,8 @@ const ContactsList = () => {
   const dispatch = useDispatch();
   const totalContacts = useSelector(contactsSelectors.getTotalContactsCount);
 
-  const onDeleteContact = (id) => dispatch(contactsActions.deleteContacts(id));
+  const onDeleteContact = (id) =>
+    dispatch(contactsOparations.deleteContact(id));
 
   return (
     <>

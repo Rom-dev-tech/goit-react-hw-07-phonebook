@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { contactsActions, contactsSelectors } from 'redux/phonebook';
+import { contactsOparations, contactsSelectors } from 'redux/phonebook';
 import toastr from 'toastr';
 import toastrOptions from 'components/Notification';
 import useInput from 'Hooks/useInput';
@@ -43,7 +43,7 @@ const ContactsFomr = ({ onClose }) => {
       return;
     }
 
-    dispatch(contactsActions.addContact(name, number));
+    dispatch(contactsOparations.addContact(name, number));
     onClose();
   };
 

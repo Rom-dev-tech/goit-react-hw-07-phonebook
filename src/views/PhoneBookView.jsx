@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Loader from 'react-loader-spinner';
+import { contactsOparations, contactsSelectors } from 'redux/phonebook';
 import ContactsFomr from 'components/ContactsFomr';
 import ContactsList from 'components/ContactsList';
 import Clock from 'components/Clock';
@@ -11,6 +15,14 @@ import FlexWrapper from 'components/FlexWrapper';
 
 const PhoneBookView = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector(contactsSelectors.getLoading);
+
+  useEffect(() => {
+    dispatch(contactsOparations.fetchContacts());
+  }, [dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -35,7 +47,15 @@ const PhoneBookView = () => {
         </Modal>
       )}
 
-      <ContactsList />
+      {isLoading ? (
+        <Loader
+          style={{ textAlign: 'center' }}
+          type="ThreeDots"
+          color="#303f9f"
+        />
+      ) : (
+        <ContactsList />
+      )}
     </>
   );
 };

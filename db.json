@@ -1,16 +1,3 @@
 {
-  "contacts": {
-    "items": [
-      {
-        "id": "1",
-        "name": "cskd cds",
-        "number": "3445325"
-      }
-    ],
-    "filter": "",
-    "_persist": {
-      "version": -1,
-      "rehydrated": true
-    }
-  }
+  "contacts": []
 }
